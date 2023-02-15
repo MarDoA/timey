@@ -24,6 +24,14 @@ namespace timeLib
                 return output.ToList();
             }
         }
+        public static List<time> chartData(int y, int m)
+        {
+            using(IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<time>($"PRAGMA foreign_keys = ON;select day,month,year,stime,etime,name from workhours inner join employees on workhours.empid = employees.code  where year = {y} and month = {m}");
+                return output.ToList();
+            }
+        }
 
         public static List<employee> getEmployees()
         {

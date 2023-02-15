@@ -58,6 +58,7 @@ namespace timey
             this.confirmpassBtn = new System.Windows.Forms.Button();
             this.AddrecordBtn = new System.Windows.Forms.Button();
             this.deleterecordBtn = new System.Windows.Forms.Button();
+            this.toExcelBTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,9 +88,10 @@ namespace timey
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(374, 577);
-            this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.Size = new System.Drawing.Size(374, 599);
+            this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
             this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellLeave);
@@ -98,11 +100,11 @@ namespace timey
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(446, 207);
+            this.saveBtn.Location = new System.Drawing.Point(446, 249);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(112, 31);
-            this.saveBtn.TabIndex = 5;
+            this.saveBtn.TabIndex = 6;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
@@ -110,20 +112,20 @@ namespace timey
             // empEditList
             // 
             this.empEditList.FormattingEnabled = true;
-            this.empEditList.Location = new System.Drawing.Point(395, 292);
+            this.empEditList.Location = new System.Drawing.Point(395, 334);
             this.empEditList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.empEditList.Name = "empEditList";
             this.empEditList.Size = new System.Drawing.Size(138, 28);
-            this.empEditList.TabIndex = 6;
+            this.empEditList.TabIndex = 7;
             this.empEditList.SelectionChangeCommitted += new System.EventHandler(this.empEditList_SelectionChangeCommitted);
             // 
             // newEmpBtn
             // 
-            this.newEmpBtn.Location = new System.Drawing.Point(504, 400);
+            this.newEmpBtn.Location = new System.Drawing.Point(504, 442);
             this.newEmpBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.newEmpBtn.Name = "newEmpBtn";
             this.newEmpBtn.Size = new System.Drawing.Size(86, 31);
-            this.newEmpBtn.TabIndex = 8;
+            this.newEmpBtn.TabIndex = 11;
             this.newEmpBtn.Text = "New";
             this.newEmpBtn.UseVisualStyleBackColor = true;
             this.newEmpBtn.Click += new System.EventHandler(this.newEmpBtn_Click);
@@ -131,7 +133,7 @@ namespace timey
             // divider1
             // 
             this.divider1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.divider1.Location = new System.Drawing.Point(398, 253);
+            this.divider1.Location = new System.Drawing.Point(398, 295);
             this.divider1.Name = "divider1";
             this.divider1.Size = new System.Drawing.Size(206, 3);
             this.divider1.TabIndex = 9;
@@ -140,7 +142,7 @@ namespace timey
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(395, 260);
+            this.label2.Location = new System.Drawing.Point(395, 302);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 28);
             this.label2.TabIndex = 10;
@@ -149,18 +151,18 @@ namespace timey
             // empList
             // 
             this.empList.FormattingEnabled = true;
-            this.empList.Location = new System.Drawing.Point(394, 87);
+            this.empList.Location = new System.Drawing.Point(394, 127);
             this.empList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.empList.Name = "empList";
             this.empList.Size = new System.Drawing.Size(138, 28);
-            this.empList.TabIndex = 6;
+            this.empList.TabIndex = 3;
             this.empList.SelectionChangeCommitted += new System.EventHandler(this.empList_SelectionChangeCommitted);
             // 
             // codeLbl
             // 
             this.codeLbl.AutoSize = true;
             this.codeLbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.codeLbl.Location = new System.Drawing.Point(539, 88);
+            this.codeLbl.Location = new System.Drawing.Point(539, 128);
             this.codeLbl.Name = "codeLbl";
             this.codeLbl.Size = new System.Drawing.Size(74, 23);
             this.codeLbl.TabIndex = 7;
@@ -168,17 +170,17 @@ namespace timey
             // 
             // editCodeTB
             // 
-            this.editCodeTB.Location = new System.Drawing.Point(539, 353);
+            this.editCodeTB.Location = new System.Drawing.Point(539, 395);
             this.editCodeTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.editCodeTB.Name = "editCodeTB";
             this.editCodeTB.Size = new System.Drawing.Size(62, 27);
-            this.editCodeTB.TabIndex = 11;
+            this.editCodeTB.TabIndex = 9;
             this.editCodeTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.editCodeTB_KeyPress);
             // 
             // nameLbl
             // 
             this.nameLbl.AutoSize = true;
-            this.nameLbl.Location = new System.Drawing.Point(395, 329);
+            this.nameLbl.Location = new System.Drawing.Point(395, 371);
             this.nameLbl.Name = "nameLbl";
             this.nameLbl.Size = new System.Drawing.Size(49, 20);
             this.nameLbl.TabIndex = 12;
@@ -187,7 +189,7 @@ namespace timey
             // codLblfixed
             // 
             this.codLblfixed.AutoSize = true;
-            this.codLblfixed.Location = new System.Drawing.Point(539, 329);
+            this.codLblfixed.Location = new System.Drawing.Point(539, 371);
             this.codLblfixed.Name = "codLblfixed";
             this.codLblfixed.Size = new System.Drawing.Size(44, 20);
             this.codLblfixed.TabIndex = 12;
@@ -197,7 +199,7 @@ namespace timey
             // 
             this.totalHLbl.AutoSize = true;
             this.totalHLbl.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.totalHLbl.Location = new System.Drawing.Point(393, 121);
+            this.totalHLbl.Location = new System.Drawing.Point(393, 161);
             this.totalHLbl.Name = "totalHLbl";
             this.totalHLbl.Size = new System.Drawing.Size(116, 25);
             this.totalHLbl.TabIndex = 13;
@@ -207,7 +209,7 @@ namespace timey
             // 
             this.totalHAmount.AutoSize = true;
             this.totalHAmount.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalHAmount.Location = new System.Drawing.Point(497, 121);
+            this.totalHAmount.Location = new System.Drawing.Point(497, 161);
             this.totalHAmount.Name = "totalHAmount";
             this.totalHAmount.Size = new System.Drawing.Size(104, 25);
             this.totalHAmount.TabIndex = 13;
@@ -216,7 +218,7 @@ namespace timey
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(395, 63);
+            this.label1.Location = new System.Drawing.Point(395, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 20);
             this.label1.TabIndex = 14;
@@ -224,19 +226,19 @@ namespace timey
             // 
             // editNameTB
             // 
-            this.editNameTB.Location = new System.Drawing.Point(395, 353);
+            this.editNameTB.Location = new System.Drawing.Point(395, 395);
             this.editNameTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.editNameTB.Name = "editNameTB";
             this.editNameTB.Size = new System.Drawing.Size(138, 27);
-            this.editNameTB.TabIndex = 11;
+            this.editNameTB.TabIndex = 8;
             // 
             // editEmpBtn
             // 
-            this.editEmpBtn.Location = new System.Drawing.Point(402, 400);
+            this.editEmpBtn.Location = new System.Drawing.Point(402, 442);
             this.editEmpBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.editEmpBtn.Name = "editEmpBtn";
             this.editEmpBtn.Size = new System.Drawing.Size(86, 31);
-            this.editEmpBtn.TabIndex = 8;
+            this.editEmpBtn.TabIndex = 10;
             this.editEmpBtn.Text = "Edit";
             this.editEmpBtn.UseVisualStyleBackColor = true;
             this.editEmpBtn.Click += new System.EventHandler(this.editEmpBtn_Click);
@@ -248,7 +250,7 @@ namespace timey
             this.monthCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.monthCB.Name = "monthCB";
             this.monthCB.Size = new System.Drawing.Size(99, 28);
-            this.monthCB.TabIndex = 15;
+            this.monthCB.TabIndex = 1;
             this.monthCB.SelectionChangeCommitted += new System.EventHandler(this.monthCB_SelectionChangeCommitted);
             // 
             // yearCB
@@ -258,7 +260,7 @@ namespace timey
             this.yearCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.yearCB.Name = "yearCB";
             this.yearCB.Size = new System.Drawing.Size(95, 28);
-            this.yearCB.TabIndex = 15;
+            this.yearCB.TabIndex = 2;
             this.yearCB.SelectionChangeCommitted += new System.EventHandler(this.yearCB_SelectionChangeCommitted);
             // 
             // label4
@@ -282,7 +284,7 @@ namespace timey
             // label6
             // 
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label6.Location = new System.Drawing.Point(398, 452);
+            this.label6.Location = new System.Drawing.Point(398, 488);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(206, 3);
             this.label6.TabIndex = 9;
@@ -291,7 +293,7 @@ namespace timey
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(393, 460);
+            this.label7.Location = new System.Drawing.Point(393, 496);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(169, 28);
             this.label7.TabIndex = 10;
@@ -299,16 +301,16 @@ namespace timey
             // 
             // passwordTB
             // 
-            this.passwordTB.Location = new System.Drawing.Point(394, 519);
+            this.passwordTB.Location = new System.Drawing.Point(394, 555);
             this.passwordTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.passwordTB.Name = "passwordTB";
             this.passwordTB.Size = new System.Drawing.Size(206, 27);
-            this.passwordTB.TabIndex = 18;
+            this.passwordTB.TabIndex = 12;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(394, 495);
+            this.label9.Location = new System.Drawing.Point(394, 531);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(103, 20);
             this.label9.TabIndex = 17;
@@ -316,42 +318,53 @@ namespace timey
             // 
             // confirmpassBtn
             // 
-            this.confirmpassBtn.Location = new System.Drawing.Point(465, 553);
+            this.confirmpassBtn.Location = new System.Drawing.Point(465, 589);
             this.confirmpassBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.confirmpassBtn.Name = "confirmpassBtn";
             this.confirmpassBtn.Size = new System.Drawing.Size(86, 31);
-            this.confirmpassBtn.TabIndex = 19;
+            this.confirmpassBtn.TabIndex = 13;
             this.confirmpassBtn.Text = "Confirm";
             this.confirmpassBtn.UseVisualStyleBackColor = true;
             this.confirmpassBtn.Click += new System.EventHandler(this.confirmpassBtn_Click);
             // 
             // AddrecordBtn
             // 
-            this.AddrecordBtn.Location = new System.Drawing.Point(403, 156);
+            this.AddrecordBtn.Location = new System.Drawing.Point(402, 202);
             this.AddrecordBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AddrecordBtn.Name = "AddrecordBtn";
             this.AddrecordBtn.Size = new System.Drawing.Size(86, 31);
-            this.AddrecordBtn.TabIndex = 20;
+            this.AddrecordBtn.TabIndex = 4;
             this.AddrecordBtn.Text = "Add";
             this.AddrecordBtn.UseVisualStyleBackColor = true;
             this.AddrecordBtn.Click += new System.EventHandler(this.AddrecordBtn_Click);
             // 
             // deleterecordBtn
             // 
-            this.deleterecordBtn.Location = new System.Drawing.Point(504, 156);
+            this.deleterecordBtn.Location = new System.Drawing.Point(503, 202);
             this.deleterecordBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deleterecordBtn.Name = "deleterecordBtn";
             this.deleterecordBtn.Size = new System.Drawing.Size(86, 31);
-            this.deleterecordBtn.TabIndex = 20;
+            this.deleterecordBtn.TabIndex = 5;
             this.deleterecordBtn.Text = "Delete";
             this.deleterecordBtn.UseVisualStyleBackColor = true;
             this.deleterecordBtn.Click += new System.EventHandler(this.deleterecordBtn_Click);
+            // 
+            // toExcelBTN
+            // 
+            this.toExcelBTN.Location = new System.Drawing.Point(446, 63);
+            this.toExcelBTN.Name = "toExcelBTN";
+            this.toExcelBTN.Size = new System.Drawing.Size(120, 29);
+            this.toExcelBTN.TabIndex = 18;
+            this.toExcelBTN.Text = "Month to Excel";
+            this.toExcelBTN.UseVisualStyleBackColor = true;
+            this.toExcelBTN.Click += new System.EventHandler(this.toExcelBTN_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 609);
+            this.ClientSize = new System.Drawing.Size(613, 628);
+            this.Controls.Add(this.toExcelBTN);
             this.Controls.Add(this.deleterecordBtn);
             this.Controls.Add(this.AddrecordBtn);
             this.Controls.Add(this.confirmpassBtn);
@@ -417,5 +430,6 @@ namespace timey
         private Button confirmpassBtn;
         private Button AddrecordBtn;
         private Button deleterecordBtn;
+        private Button toExcelBTN;
     }
 }

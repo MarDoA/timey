@@ -16,7 +16,7 @@ namespace timeLib
         public int month { get; set; }
         public int year { get; set; }
         public int id { get; set; }
-
+        public string name { get; set; }
 
         public static DateTime convertTimeToDateTime(time lr, bool isStart)
         {
