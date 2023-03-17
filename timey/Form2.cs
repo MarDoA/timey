@@ -17,6 +17,7 @@ using Point = System.Drawing.Point;
 using Rectangle = System.Drawing.Rectangle;
 using TextBox = System.Windows.Forms.TextBox;
 
+//to do: hours after stime e time edit
 namespace timey
 {
     public partial class Form2 : Form
@@ -33,7 +34,7 @@ namespace timey
         List<updateValue> updatedTime = new List<updateValue>();
         time newInsert = new time();
 
-        DateTimePicker dtp = new DateTimePicker();
+        private DateTimePicker dtp ;
 
 
         struct updateValue
@@ -52,10 +53,13 @@ namespace timey
         public Form2()
         {
             InitializeComponent();
-
+            dtp = new DateTimePicker();
             dtp.Format = DateTimePickerFormat.Custom;
             dtp.CustomFormat = "hh:mm tt";
             dtp.ShowUpDown = true;
+            dtp.Visible = false;
+            dtp.KeyPress += new KeyPressEventHandler(dtp_KeyPress);
+            dtp.CloseUp += new EventHandler(dtp_CloseUp);
             dtp.TextChanged += new EventHandler(dtp_TextChanged);
             dataGridView1.Controls.Add(dtp);
 
@@ -103,7 +107,17 @@ namespace timey
         {
             dataGridView1.CurrentCell.Value = dtp.Text;
         }
-
+        private void dtp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                dtp.Visible = false;
+            }
+            else if (e.KeyChar == (char)Keys.Enter)
+            {
+                dtp.Visible = false;
+            }
+        }
 
         private void reFresh()
         {
@@ -266,6 +280,83 @@ namespace timey
                         }
                     }
                 }
+                else if (dataGridView1.CurrentCell.ColumnIndex ==1 )
+                {
+
+                    string idString = dataGridView1.Rows[e.RowIndex].Cells["id"].Value as string;
+                    if (idString == "new")
+                    {
+                        newInsert.stime = e.FormattedValue.ToString();
+                    }
+                    else
+                    {
+                        uv.id = int.Parse(idString);
+                        uv.value = e.FormattedValue.ToString();
+                        uv.valuename = "stime";
+                        updatedTime.Add(uv);
+                    }
+                    if (dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex+1].Value != null 
+                        || dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex + 1].Value.ToString()!="")
+                    {                        
+                        DateTime endTime,starttime = new DateTime();
+                        starttime = DateTime.Parse(dataGridView1.CurrentCell.Value.ToString());
+                        endTime = DateTime.Parse( dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex + 1].Value.ToString());
+
+                        if (endTime<starttime)
+                        {
+                            endTime = endTime.AddDays(1);
+                        }
+                        
+                        double hours;
+                        hours = Math.Round((endTime-starttime).TotalHours, 2);
+
+                        dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[3].Value = hours.ToString();
+
+                        uv.id = int.Parse(idString);
+                        uv.value = hours.ToString();
+                        uv.valuename = "hours";
+                        updatedTime.Add(uv);
+                    }
+
+                }
+                else if (dataGridView1.CurrentCell.ColumnIndex ==2)
+                {
+                    string idString = dataGridView1.Rows[e.RowIndex].Cells["id"].Value as string;
+                    if (idString == "new")
+                    {
+                        newInsert.stime = e.FormattedValue.ToString();
+                    }
+                    else
+                    {
+                        uv.id = int.Parse(idString);
+                        uv.value = e.FormattedValue.ToString();
+                        uv.valuename = "etime";
+                        updatedTime.Add(uv);
+                    }
+                    if (dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex - 1].Value != null
+                        || dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex -1].Value.ToString() != "")
+                    {
+                        DateTime endTime, starttime = new DateTime();
+                        endTime = DateTime.Parse(dataGridView1.CurrentCell.Value.ToString());
+                        starttime = DateTime.Parse(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex - 1].Value.ToString());
+
+                        if (endTime < starttime)
+                        {
+                           endTime= endTime.AddDays(1);
+                        }
+
+                        double hours;
+                        hours = Math.Round(( endTime - starttime).TotalHours, 2);
+
+                        dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[3].Value = hours.ToString();
+
+
+                        uv.id = int.Parse(idString);
+                        uv.value = hours.ToString();
+                        uv.valuename = "hours";
+                        updatedTime.Add(uv);
+                    }
+                }
                 if (isError)
                 {
                     MessageBox.Show(errorMessage);
@@ -375,13 +466,7 @@ namespace timey
                 e.Handled = true;
             }
         }
-        //private void stop_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsControl(e.KeyChar))
-        //    {
-        //        e.Handled = true;
-        //    }
-        //}
+
         private void HoursColumn_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -417,14 +502,22 @@ namespace timey
                 }
 
             }
-            //else if (dataGridView1.CurrentCell.ColumnIndex ==1|| dataGridView1.CurrentCell.ColumnIndex == 2)
-            //{
-            //    //TextBox tb = e.Control as TextBox;
-            //    if (tb != null)
-            //    {
-            //        tb.KeyPress += new KeyPressEventHandler(stop_KeyPress);
-            //    }
-            //}
+            else if (dataGridView1.CurrentCell.ColumnIndex == 1 || dataGridView1.CurrentCell.ColumnIndex == 2)
+            {
+                
+                Rectangle rect = dataGridView1.GetCellDisplayRectangle(dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex, false);
+                dtp.Size = new Size(rect.Width, rect.Height);
+                dtp.Location = new Point(rect.X, rect.Y);
+                dtp.Visible = true;
+                if (!string.IsNullOrEmpty(dataGridView1.CurrentCell.Value.ToString()))
+                {
+                    dtp.Text = dataGridView1.CurrentCell.Value.ToString();
+                }
+                if (e.Control is DateTimePicker)
+                {
+                    // Attach a KeyDown event handler to the editing control
+                }
+            }
         }
 
         private void confirmpassBtn_Click(object sender, EventArgs e)
@@ -458,53 +551,36 @@ namespace timey
 
         private void dtp_CloseUp(object? sender, EventArgs e)
         {
+            dataGridView1.CurrentCell.Value = dtp.Value;
             dtp.Visible = false;
         }
 
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex==1||e.ColumnIndex==2)
-            {
-                Rectangle rect = dataGridView1.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);             
-                dtp.Size = new Size(rect.Width,rect.Height);
-                dtp.Location = new Point(rect.X,rect.Y);
-                if (!string.IsNullOrEmpty(dataGridView1.CurrentCell.Value.ToString()))
-                {
-                    dtp.Value = DateTime.Parse(dataGridView1.CurrentCell.Value.ToString());
-                }
-                dtp.Visible = true;
-                dtp.Focus();
-                dtp.Select();   
-               
-            }
-            else
-            {
-                dtp.Visible = false;
-                dtp.Focus();
-            }
+            
         }
 
         private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            if (e.ColumnIndex == 1 || e.ColumnIndex == 2)
-            {
-                e.Cancel = true;              
-            }
-            else
-            {
-                dtp.Visible = false;
-            }
+            
         }
 
 
         private void dataGridView1_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            dtp.Visible = false;
+            if (e.ColumnIndex ==1||e.ColumnIndex==2)
+            {                
+                //dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = dtp.Text;
+                dtp.Visible = false;
+            }
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == 1 || e.ColumnIndex == 2)
+            {
 
+            }
 
         }
 
@@ -553,25 +629,28 @@ namespace timey
 
             foreach (var shift in shiftData)
             {
-                var dayOfMonth = shift.day;
-                var year = shift.year;
-                var startTime = DateTime.ParseExact(shift.stime, "hh:mm tt", CultureInfo.InvariantCulture);
-                var endTime = DateTime.ParseExact(shift.etime, "hh:mm tt", CultureInfo.InvariantCulture);
-                if (endTime < startTime)// shift ends next day
+                if (shift.etime != null && shift.stime !=null)
                 {
-                    // Split shift into two: one until midnight, and another from midnight until end time
-                    var firstShiftEndTime = new DateTime(startTime.Year, startTime.Month, startTime.Day, 23, 59, 59);
-                    var secondShiftStartTime = new DateTime(endTime.Year, endTime.Month, endTime.Day, 0, 0, 0);
-                    var firstShiftDuration = firstShiftEndTime - startTime;
-                    var secondShiftDuration = endTime - secondShiftStartTime;
+                    var dayOfMonth = shift.day;
+                    var year = shift.year;
+                    var startTime = DateTime.ParseExact(shift.stime, "hh:mm tt", CultureInfo.InvariantCulture);
+                    var endTime = DateTime.ParseExact(shift.etime, "hh:mm tt", CultureInfo.InvariantCulture);
+                    if (endTime < startTime)// shift ends next day
+                    {
+                        // Split shift into two: one until midnight, and another from midnight until end time
+                        var firstShiftEndTime = new DateTime(startTime.Year, startTime.Month, startTime.Day, 23, 59, 59);
+                        var secondShiftStartTime = new DateTime(endTime.Year, endTime.Month, endTime.Day, 0, 0, 0);
+                        var firstShiftDuration = firstShiftEndTime - startTime;
+                        var secondShiftDuration = endTime - secondShiftStartTime;
 
-                    data[dayOfMonth - 1].Add(Tuple.Create(shift.name, startTime, firstShiftEndTime));
-                    data[dayOfMonth].Add(Tuple.Create(shift.name, secondShiftStartTime, endTime));
-                }
-                else
-                {
-                    data[dayOfMonth - 1].Add(Tuple.Create(shift.name, startTime, endTime));
+                        data[dayOfMonth - 1].Add(Tuple.Create(shift.name, startTime, firstShiftEndTime));
+                        data[dayOfMonth].Add(Tuple.Create(shift.name, secondShiftStartTime, endTime));
+                    }
+                    else
+                    {
+                        data[dayOfMonth - 1].Add(Tuple.Create(shift.name, startTime, endTime));
 
+                    } 
                 }
             }
 

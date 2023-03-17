@@ -116,7 +116,7 @@ namespace timeLib
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute($"PRAGMA foreign_keys = ON;delete form workhours where id={id}");
+                cnn.Execute($"PRAGMA foreign_keys = ON;delete from workhours where id={id}");
             }
         }
 
