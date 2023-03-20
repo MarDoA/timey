@@ -295,7 +295,7 @@ namespace timey
                         uv.valuename = "stime";
                         updatedTime.Add(uv);
                     }
-                    if (dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex + 1].Value.ToString().Length>1)
+                    if (dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex + 1].Value.ToString().Length>1 && idString!="new" )
                     {                        
                         DateTime endTime,starttime = new DateTime();
                         starttime = DateTime.Parse(dataGridView1.CurrentCell.Value.ToString());
@@ -323,7 +323,10 @@ namespace timey
                     string idString = dataGridView1.Rows[e.RowIndex].Cells["id"].Value as string;
                     if (idString == "new")
                     {
-                        newInsert.stime = e.FormattedValue.ToString();
+                        isError = true;
+                        errorMessage = "Set start time and save it first";
+                        dtp.Text = "";
+                        dataGridView1.CurrentCell.Value = "";
                     }
                     else
                     {
@@ -332,7 +335,7 @@ namespace timey
                         uv.valuename = "etime";
                         updatedTime.Add(uv);
                     }
-                    if (dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex -1].Value.ToString().Length>1)
+                    if (dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex -1].Value.ToString().Length>1 && idString !="new")
                     {
                         DateTime endTime, starttime = new DateTime();
                         endTime = DateTime.Parse(dataGridView1.CurrentCell.Value.ToString());
@@ -377,6 +380,11 @@ namespace timey
                     sqlDataAccess.InsertNewRecord(newInsert, emp.code);
                 }
             }
+            deletedTime.Clear();
+            updatedTime.Clear();
+            newInsert = new time();
+            newRow = false;
+            updateTable();
         }
 
         private void UpdateRecords(List<updateValue> updatedTime)
