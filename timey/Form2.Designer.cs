@@ -355,7 +355,7 @@ namespace timey
             this.toExcelBTN.Name = "toExcelBTN";
             this.toExcelBTN.Size = new System.Drawing.Size(120, 29);
             this.toExcelBTN.TabIndex = 18;
-            this.toExcelBTN.Text = "Month to Excel";
+            this.toExcelBTN.Text = "Month to Chart";
             this.toExcelBTN.UseVisualStyleBackColor = true;
             this.toExcelBTN.Click += new System.EventHandler(this.toExcelBTN_Click);
             // 

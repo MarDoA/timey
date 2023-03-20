@@ -295,8 +295,7 @@ namespace timey
                         uv.valuename = "stime";
                         updatedTime.Add(uv);
                     }
-                    if (dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex+1].Value != null 
-                        || dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex + 1].Value.ToString()!="")
+                    if (dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex + 1].Value.ToString().Length>1)
                     {                        
                         DateTime endTime,starttime = new DateTime();
                         starttime = DateTime.Parse(dataGridView1.CurrentCell.Value.ToString());
@@ -333,8 +332,7 @@ namespace timey
                         uv.valuename = "etime";
                         updatedTime.Add(uv);
                     }
-                    if (dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex - 1].Value != null
-                        || dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex -1].Value.ToString() != "")
+                    if (dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex -1].Value.ToString().Length>1)
                     {
                         DateTime endTime, starttime = new DateTime();
                         endTime = DateTime.Parse(dataGridView1.CurrentCell.Value.ToString());
