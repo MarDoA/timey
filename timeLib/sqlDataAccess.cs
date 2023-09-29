@@ -24,11 +24,11 @@ namespace timeLib
                 return output.ToList();
             }
         }
-        public static List<time> chartData(int y, int m)
+        public static List<time> chartData(int y, int m,string c)
         {
             using(IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<time>($"PRAGMA foreign_keys = ON;select day,month,year,stime,etime,name from workhours inner join employees on workhours.empid = employees.code  where year = {y} and month = {m}");
+                var output = cnn.Query<time>($"PRAGMA foreign_keys = ON;select day,month,year,stime,etime,name from workhours inner join employees on workhours.empid = employees.code  where year = {y} and month = {m} and empid in ({c}) ");
                 return output.ToList();
             }
         }

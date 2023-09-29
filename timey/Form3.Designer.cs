@@ -113,6 +113,7 @@
             this.Controls.Add(this.totalHlbl);
             this.Controls.Add(this.lastlogDateLbl);
             this.Controls.Add(this.lastloglbl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form3";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);

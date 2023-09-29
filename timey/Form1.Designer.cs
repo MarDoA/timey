@@ -40,10 +40,9 @@
             // 
             // logBtnCode
             // 
-            this.logBtnCode.Location = new System.Drawing.Point(161, 38);
-            this.logBtnCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.logBtnCode.Location = new System.Drawing.Point(184, 51);
             this.logBtnCode.Name = "logBtnCode";
-            this.logBtnCode.Size = new System.Drawing.Size(69, 23);
+            this.logBtnCode.Size = new System.Drawing.Size(79, 31);
             this.logBtnCode.TabIndex = 0;
             this.logBtnCode.Text = "log in";
             this.logBtnCode.UseVisualStyleBackColor = true;
@@ -51,9 +50,10 @@
             // 
             // adminBtn
             // 
-            this.adminBtn.Location = new System.Drawing.Point(10, 123);
+            this.adminBtn.Location = new System.Drawing.Point(11, 164);
+            this.adminBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.adminBtn.Name = "adminBtn";
-            this.adminBtn.Size = new System.Drawing.Size(75, 24);
+            this.adminBtn.Size = new System.Drawing.Size(86, 32);
             this.adminBtn.TabIndex = 3;
             this.adminBtn.Text = "Admin";
             this.adminBtn.UseVisualStyleBackColor = true;
@@ -62,18 +62,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 20);
+            this.label1.Location = new System.Drawing.Point(54, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 15);
+            this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Enter code";
             // 
             // codeTB
             // 
-            this.codeTB.Location = new System.Drawing.Point(10, 38);
-            this.codeTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.codeTB.Location = new System.Drawing.Point(11, 51);
             this.codeTB.Name = "codeTB";
-            this.codeTB.Size = new System.Drawing.Size(141, 23);
+            this.codeTB.Size = new System.Drawing.Size(161, 27);
             this.codeTB.TabIndex = 1;
             this.codeTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.codeTB_KeyDown);
             this.codeTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.codeTB_KeyPress);
@@ -82,28 +81,26 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(70, 70);
+            this.label2.Location = new System.Drawing.Point(80, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 19);
+            this.label2.Size = new System.Drawing.Size(34, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "OR";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(10, 90);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox1.Location = new System.Drawing.Point(11, 120);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(141, 23);
+            this.comboBox1.Size = new System.Drawing.Size(161, 28);
             this.comboBox1.TabIndex = 4;
             this.comboBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox1_KeyDown);
             // 
             // logBtnList
             // 
-            this.logBtnList.Location = new System.Drawing.Point(161, 90);
-            this.logBtnList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.logBtnList.Location = new System.Drawing.Point(184, 120);
             this.logBtnList.Name = "logBtnList";
-            this.logBtnList.Size = new System.Drawing.Size(69, 23);
+            this.logBtnList.Size = new System.Drawing.Size(79, 31);
             this.logBtnList.TabIndex = 0;
             this.logBtnList.Text = "log in";
             this.logBtnList.UseVisualStyleBackColor = true;
@@ -111,19 +108,18 @@
             // 
             // passwordTB
             // 
-            this.passwordTB.Location = new System.Drawing.Point(91, 125);
-            this.passwordTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.passwordTB.Location = new System.Drawing.Point(104, 167);
             this.passwordTB.Name = "passwordTB";
             this.passwordTB.PasswordChar = '*';
-            this.passwordTB.Size = new System.Drawing.Size(140, 23);
+            this.passwordTB.Size = new System.Drawing.Size(159, 27);
             this.passwordTB.TabIndex = 5;
             this.passwordTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(241, 159);
+            this.ClientSize = new System.Drawing.Size(275, 212);
             this.Controls.Add(this.passwordTB);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.adminBtn);
@@ -132,7 +128,7 @@
             this.Controls.Add(this.codeTB);
             this.Controls.Add(this.logBtnList);
             this.Controls.Add(this.logBtnCode);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

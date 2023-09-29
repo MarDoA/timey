@@ -392,6 +392,7 @@ namespace timey
             this.Controls.Add(this.empEditList);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form2";
