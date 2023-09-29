@@ -13,11 +13,13 @@ namespace timey
 {
     public partial class Form3 : Form
     {
+        private Form4 frm4;
         employee emp;
         time lr;
-        public Form3(employee emp)
+        public Form3(employee emp,Form4 frm4 )
         {
             InitializeComponent();
+            this.frm4 = frm4;
             this.emp = emp;
             lr = sqlDataAccess.getlastRecord(emp.code);
             if (lr.etime != "" && lr.etime != null)
@@ -67,6 +69,10 @@ namespace timey
             sqlDataAccess.insertStartTime(emp.code,t);
             MessageBox.Show("logged in at: " + t.stime);
             this.Close();
+            if (frm4 != null)
+            {
+                frm4.Restart();
+            }
         }
 
         private void checkoutBtn_Click(object sender, EventArgs e)
@@ -81,6 +87,10 @@ namespace timey
             sqlDataAccess.insertEndTime(t,lr.id);
             MessageBox.Show("looged out at: " + t.etime + " for a total of " + t.hours.ToString()+ " hours");
             this.Close();
+            if (frm4 != null)
+            {
+                frm4.Restart();
+            }
         }
     }
 }

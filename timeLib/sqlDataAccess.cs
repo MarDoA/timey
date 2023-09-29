@@ -56,6 +56,21 @@ namespace timeLib
                 }
             }
         }
+        public static List<int> getlastActive()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<int>("PRAGMA foreign_keys = ON;SELECT empid from workhours WHERE etime is null");
+                if (output.Count() != 0)
+                {
+                    return output.ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         public static double getTotalMonth(int empid, int month, int year)
         {

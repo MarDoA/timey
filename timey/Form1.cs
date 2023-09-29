@@ -5,6 +5,7 @@ namespace timey
 {
     public partial class Form1 : Form
     {
+        Form4 frm4 = new Form4();
         List<employee> emps = sqlDataAccess.getEmployees();
         string password;
         int code;
@@ -15,6 +16,7 @@ namespace timey
             comboBox1.DataSource = emps;
             comboBox1.DisplayMember = "name";
             password = Settings.Default.password;
+            frm4.Show();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -41,7 +43,7 @@ namespace timey
         }
         private void openCheckForm(employee emp)
         {
-            Form3 frm = new Form3(emp);
+            Form3 frm = new Form3(emp,frm4);
             frm.Text = emp.name;
             frm.Show();
         }
